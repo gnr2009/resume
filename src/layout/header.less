@@ -53,6 +53,20 @@ header {
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  header {
+    animation: none;
+
+    .action-link {
+      transition: none;
+
+      &::after {
+        transition: none;
+      }
+    }
+  }
+}
+
 @media print {
   header {
     display: none;
