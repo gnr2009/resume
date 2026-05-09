@@ -5,15 +5,51 @@ header {
 
   background: rgb(39, 63, 117);
   color: rgba(255, 255, 255, 0.85);
+  animation: nav-fade-in 360ms ease-out;
 
   .action-link {
+    position: relative;
+    display: inline-block;
     margin: 0 4px;
     font-size: 12px;
     color: rgba(255, 255, 255, 0.85);
+    transform: translateY(0);
+    transition: color 220ms ease, transform 220ms ease;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 100%;
+      height: 1px;
+      background: currentcolor;
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform 220ms ease;
+    }
 
     &:hover {
       cursor: pointer;
+      color: #fff;
+      transform: translateY(-1px);
     }
+
+    &:hover::after {
+      transform: scaleX(1);
+    }
+  }
+}
+
+@keyframes nav-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
